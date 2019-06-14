@@ -1,0 +1,23 @@
+{
+  "name": "mongo-crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sajjad1112ali/mongo-crud.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sajjad1112ali/mongo-crud/issues"
+  },
+  "homepage": "https://github.com/sajjad1112ali/mongo-crud#readme",
+  "dependencies": {
+    "mongoose": "^5.0.1"
+  }
+}
