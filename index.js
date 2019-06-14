@@ -15,7 +15,8 @@ const courseSchema = new mongoose.Schema({
 });
 
 const Course = mongoose.model('Course', courseSchema);
-
+/* INSERT COURSE */
+/*
 async function createCourse() {
     console.log("Creating course");
 
@@ -30,6 +31,17 @@ async function createCourse() {
     console.log(result);
 }
 createCourse();
+*/
 
+/** GET COURSES */
 
-console.log("Exicuting code");
+async function getCourses()
+{
+   const result = await Course.find({author: 'Sajjad', isPublished: true})
+    .limit(10)
+    .sort({name: 1})
+    .select({name: 1, tags: 1});
+    console.log(result);
+}
+
+getCourses();
