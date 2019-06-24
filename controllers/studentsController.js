@@ -3,10 +3,13 @@ const Student = require('../models/student.model');
 //Simple version, without validation or sanitation
 module.exports = {
     getStudents: function (req, res) {
-        res.send('Get all students');
+        res.render('students/index');
     },
     createStudent: function (req, res) {
-        res.send('Create student');
+        res.render('students/create');
+    },
+    addStudent: function (req, res) {
+        res.send('Student created successfully');
     },
     updateStudent: function (req, res) {
         res.send('Update student');
