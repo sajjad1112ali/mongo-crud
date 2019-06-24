@@ -1,0 +1,143 @@
+body{font-size: .8rem;}
+.nav-banner{
+    background-image: url('../images/banner.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+		background-position: center;
+		height: 600px;
+}
+.banner-heading{
+	    font-size: 3rem;
+}
+
+.color-white{
+	    color: white;
+}
+.color-dgry{
+	    color: #353535;
+}
+.color-yellow{
+	    color: #f6bb2f;
+}
+
+
+.btn-round
+{
+	padding: 7px 0px;
+	background-color: #f6bc2d;
+	border-radius: 50px;
+	width: 140px;
+	color: #FFF;
+	transition: all 1s ease;
+}
+.btn-round-trans{
+    background: none;
+    border: 1px solid #f6bc2d;
+    color: #f6bc2d;	
+}
+.btn-round:hover
+{
+	background-color: #305400;
+}
+.btn-round:hover
+{
+	color: #FFF;	
+}
+
+.sec-one
+{
+	background-color: none;
+}
+
+.sec-with-btn
+{
+	padding: 20px 60px;
+}
+
+.nav-item.active
+{
+	color: #fff;
+	border-bottom: 2px solid #FFF;
+}
+
+.engagement-text
+{
+	top: 147px;
+	z-index: 2;
+	letter-spacing: 4px;
+	color: #FFF;
+	right: 109px;
+
+}
+.bgboard
+{
+	top: 140px;
+	background: #f6bc2d;
+	width: 113%;
+	left: -31%;
+	height: 100px;
+	z-index:-1;
+}
+@media (max-width: 992px)
+{
+	.nav-abs
+	{
+		position: absolute;
+	    width: 100%;
+	}
+	.pt-6{
+		padding-top: 6rem!important;
+	}
+	.sec-with-btn
+	{
+		padding: 20px;
+	}
+
+}
+
+/************************************************************************* */
+
+.row-eq-height-custom {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display:         flex;
+  }
+  .vcenter{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	}
+	
+  .vbottom{
+	display:flex;
+	flex-direction:column;
+	justify-content:flex-end;
+  }
+
+  .shadow {
+	-moz-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.45);
+	-webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.45);
+	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.45);
+	}
+.fp-details
+{
+	padding: 22px 65px;
+}
+.fp-img-container span
+{
+	writing-mode: tb-rl;
+    right: 8px;
+	top: 25px;
+}
+.arrow-holder
+{
+    border: 1px solid;
+    bottom: 43px;
+    right: 135px;
+    width: 60px;
+    background: grey;
+    color: white;
+    overflow: hidden;
+    padding: 10px 8px;
+}
