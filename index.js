@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require('body-parser');
 
@@ -7,6 +8,10 @@ const config = require("./config");
 const studentRoutes = require('./routes/students.routes');
 const publicRoutes = require('./routes/public.routes');
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 app.set('view engine', 'ejs');
 app.use('/students', studentRoutes);
 app.use(publicRoutes);
@@ -19,9 +24,9 @@ app.listen(config.port, () => {
 //Connect to database
 
 
-// mongoose.connect(config.database.host)
-//     .then(() => console.log("Connected to MongoDB..."))
-//     .catch(err => console.error("Could not connect to MongoDB", err));
+mongoose.connect(config.database.host)
+    .then(() => console.log("Connected to MongoDB..."))
+    .catch(err => console.error("Could not connect to MongoDB", err));
 
 
 

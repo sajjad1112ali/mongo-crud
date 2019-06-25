@@ -11,15 +11,21 @@ const studentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    class: {
+    _class: {
+        required: true,
         type: Number,
         enum:{
             values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
             message: "Kindly enter valid class"
             }       
     },
-    date_of_birth:{
-        type: Date        
+    gender:{
+        type: String,
+        required: true,
+        enum:{
+            values: ["Male", "Female"],
+            message: "Kindly enter valid value for Gender"
+            }       
     }
 });
 
