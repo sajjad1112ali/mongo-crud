@@ -1,57 +1,108 @@
 const Student = require('../models/student.model');
 
 //Simple version, without validation or sanitation
-module.exports = {
+var self = module.exports = {
     getStudents: function (req, res) {
-        res.render('students/index');
+        async function getAllStudent()
+        {
+        const result = await Student.find()
+            .sort({name: 1})
+            console.log(result);
+
+            res.render('students/index', {data: result});
+
+        }
+        getAllStudent();
     },
     createStudent: function (req, res) {
         res.render('students/create');
     },
     addStudent: function (req, res) {
-
-        const { name, email, _class, gender } = req.body;
-
-        // Creating new Student 
-        const student = new Student({
-            name,
-            email,
-            _class,
-            gender
-        });
-
+        // Getting data from request
+       let student = self.getStudentData(req);
         // Saving to databse
 
         async function createStudent() {
-            let insertResponse = {message: "Student created successfully", class_name:"alert-success"};
+            let insertResponse = {data: {message: "Student created successfully", class_name:"alert-success", errors: []}};
             try {
-                console.log(insertResponse)
                 const result = await student.save();
-                console.log(result);
                 res.render('students/create',insertResponse);
                 
             } catch (ex) {
+                insertResponse = {data: {message: "Error in creating new student", class_name:"alert-warning", errors: []}};
+
                 for (field in ex.errors) {
-
-                    console.log(ex.errors[field].message);
+                    insertResponse.data.errors.push(ex.errors[field].message);
                 }
-                 insertResponse = {message: "Error in creating new student", class_name:"alert-warning"};
-                 console.log( typeof(insertResponse))
-
                 res.render('students/create',insertResponse);
             }
         }
         createStudent();
-
-
-// Changed to check
-
-       
     },
     updateStudent: function (req, res) {
-        res.send('Update student');
+        // Getting data from request
+    //    let student = self.getStudentData(req);
+    const { name, email, _class, gender } = req.body;
+        const id = req.params.id;
+        async function updateStudent_() {
+            try {
+            const student = await Student.findById(id);
+            console.log(student);
+
+            student.name = name;
+            student.email = email;
+            student._class = _class;
+            student.gender= gender;
+            
+            const result = await student.save();
+            res.redirect("/students")
+            } catch (ex) {
+                console.log("Not found");
+            }
+
+            
+        }
+        updateStudent_();
+    },
+    getSingleStudent: function (req, res) {
+        const id = req.params.id;
+
+        async function getSingleStudent_() {
+            try {
+
+                const student = await Student.findById(id);
+                if(!student) {
+
+                    res.redirect("/students")
+                }
+                else
+                {
+                    res.render("students/update", {student})
+
+                }
+
+            } catch (ex) {
+                console.log("Not found");
+            }
+        }
+        getSingleStudent_();
     },
     deleteStudent: function (req, res) {
-        res.send('Delete student');
+
+        Student.remove({_id: req.params.id}, function(err){
+            if(err) res.json(err);
+            res.redirect("/students")
+          });
+    },
+    getStudentData: function (req) {
+        const { name, email, _class, gender } = req.body;
+
+        // Creating new Student 
+        return new Student({
+            name,
+            email,
+            _class,
+            gender
+        });       
     }
 }

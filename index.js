@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require('body-parser');
+var methodOverride = require('method-override')
 
 const config = require("./config");
 
@@ -8,6 +9,7 @@ const config = require("./config");
 const studentRoutes = require('./routes/students.routes');
 const publicRoutes = require('./routes/public.routes');
 const app = express();
+app.use(methodOverride('_method'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

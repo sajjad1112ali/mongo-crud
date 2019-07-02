@@ -1,7 +1,7 @@
 <% include ../partials/header.ejs %>
 
 <div class="container">
-    <div class="text-right">
+    <div class="text-right mt-5">
         <a class="btn btn-primary" href="/students/create" role="button">Create</a>
     </div>
   
@@ -10,30 +10,34 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Class</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+                <% var s_no =1; %>
+
+                <% for (let i=0; i< data.length; i++) {%>
+                
+                  <tr>
+                      <th scope="row"><%= s_no++ %></th>
+                      <td><%= data[i]["name"] %></td>
+                      <td><%= data[i]["email"] %></td>
+                      <td><%= data[i]["gender"] %></td>
+                      <td><%= data[i]["_class"] %></td>
+                      <td class="text-center">
+                        <a class="btn btn-warning btn-sm" href="/students/update/<%= data[i]['id'] %>" role="button">Update</a>
+                        <form method="POST" class="pt-1" action="/students/delete/<%= data[i]['id'] %>" >
+                          <input type="submit" value="Delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete?')" />
+
+
+                        </form>
+                      </td>
+                    </tr>
+                  <% }  %>  
             </tbody>
           </table>  
       </div>
