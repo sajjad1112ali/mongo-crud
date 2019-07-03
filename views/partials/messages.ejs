@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <% if(typeof (data) !== "undefined") {%>
+
+        <div class="alert <%= data.class_name %>" role="alert">
+            <strong><%= data.message %></strong>
+            <% for (let i=0; i< data.errors.length; i++) {%>
+                
+                <ul>
+                    <li><%= data.errors[i] %></li>
+                </ul>
+                <% }  %>          
+        </div>
+    <%}%>  
+
+    <% if(typeof (message) !='undefined') {%>
+
+        <div class="alert <%= class_name %>" role="alert">
+            <strong><%= message %></strong>
+        </div>
+        <%}%>  
+       
+</div>

@@ -20,17 +20,17 @@
             <tbody>
                 <% var s_no =1; %>
 
-                <% for (let i=0; i< data.length; i++) {%>
+                <% for (let i=0; i< data_result.length; i++) {%>
                 
                   <tr>
                       <th scope="row"><%= s_no++ %></th>
-                      <td><%= data[i]["name"] %></td>
-                      <td><%= data[i]["email"] %></td>
-                      <td><%= data[i]["gender"] %></td>
-                      <td><%= data[i]["_class"] %></td>
+                      <td><%= data_result[i]["name"] %></td>
+                      <td><%= data_result[i]["email"] %></td>
+                      <td><%= data_result[i]["gender"] %></td>
+                      <td><%= data_result[i]["_class"] %></td>
                       <td class="text-center">
-                        <a class="btn btn-warning btn-sm" href="/students/update/<%= data[i]['id'] %>" role="button">Update</a>
-                        <form method="POST" class="pt-1" action="/students/delete/<%= data[i]['id'] %>" >
+                        <a class="btn btn-warning btn-sm" href="/students/update/<%= data_result[i]['id'] %>" role="button">Update</a>
+                        <form method="POST" class="pt-1" action="/students/delete/<%= data_result[i]['id'] %>" >
                           <input type="submit" value="Delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete?')" />
 
 

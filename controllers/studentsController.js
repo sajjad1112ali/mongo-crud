@@ -7,10 +7,7 @@ var self = module.exports = {
         {
         const result = await Student.find()
             .sort({name: 1})
-            console.log(result);
-
-            res.render('students/index', {data: result});
-
+            res.render('students/index', {data_result: result});
         }
         getAllStudent();
     },
@@ -32,6 +29,7 @@ var self = module.exports = {
                 insertResponse = {data: {message: "Error in creating new student", class_name:"alert-warning", errors: []}};
 
                 for (field in ex.errors) {
+                    console.log(ex.errors[field].message)
                     insertResponse.data.errors.push(ex.errors[field].message);
                 }
                 res.render('students/create',insertResponse);
@@ -47,7 +45,6 @@ var self = module.exports = {
         async function updateStudent_() {
             try {
             const student = await Student.findById(id);
-            console.log(student);
 
             student.name = name;
             student.email = email;
@@ -88,10 +85,10 @@ var self = module.exports = {
         getSingleStudent_();
     },
     deleteStudent: function (req, res) {
-
         Student.remove({_id: req.params.id}, function(err){
             if(err) res.json(err);
-            res.redirect("/students")
+            //req.flash('message', 'Your message goes here');
+            res.redirect("/students");
           });
     },
     getStudentData: function (req) {

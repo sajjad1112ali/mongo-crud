@@ -1,18 +1,8 @@
 <% include ../partials/header.ejs %>
+<% include ../partials/messages.ejs %>
 
 <div class="container p-5">
-    <% if(typeof (data) !== "undefined") {%>
 
-        <div class="alert <%= data.class_name %>" role="alert">
-            <strong><%= data.message %></strong>
-            <% for (let i=0; i< data.errors.length; i++) {%>
-                
-                <ul>
-                    <li><%= data.errors[0] %></li>
-                </ul>
-                <% }  %>          
-        </div>
-    <%}%>
     <div class="card">
         <div class="card-header">
             Create Student

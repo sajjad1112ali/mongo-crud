@@ -26,8 +26,8 @@
                         var options = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
                         for ( var i = 0; i < options.length; i++ )
                         {
-                            var selected = ( student['name'] == i ) ? "selected" : "";
-                            %><option value="<%=options[ i ] %>" <%=selected %>><%= options[i] %></option><%
+                            var selected = ( student['_class'] == options[ i ] ) ? "selected" : "";
+                            %><option value="<%= options[ i ] %>" <%=selected %>><%= options[i] %></option><%
                         }
                         %>                        
                     </select>
